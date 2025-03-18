@@ -1,111 +1,110 @@
-# Admin Dashboard
+# MERN Stack Project
 
 ## Overview
-The Admin Dashboard provides functionalities to manage agents, upload CSV files, distribute tasks, and view assigned lists. This project is built using React.js for the frontend and Node.js with MongoDB for the backend.
+This is a **MERN Stack** project that includes **user authentication, task management, and file upload functionality**. The application is built using **MongoDB, Express.js, React.js, and Node.js**.
 
 ## Features
+- **User Authentication** (Register/Login with JWT Authentication)
+- **Role-based Access Control** (Admin & Agent)
+- **Task Management** (Admin can assign tasks to agents)
+- **CSV File Upload & Task Distribution**
+- **Frontend UI for Managing Users and Tasks**
 
-### 1. Add Agents
-- Create a feature to add agents.
-- Each agent has the following details:
-  - Name
-  - Email
-  - Mobile Number (with country code)
-  - Password
+---
 
-### 2. Upload CSV and Distribute Lists
-- Upload a CSV file containing a list of tasks with:
-  - First Name – Text
-  - Phone – Number
-  - Notes – Text
-- Validate the file upload to accept only `csv`, `xlsx`, and `xls` formats.
-- Ensure the uploaded CSV follows the correct format.
-- Distribute the tasks equally among 5 agents:
-  - Example: If there are 25 tasks, each agent receives 5 tasks.
-  - If tasks are not evenly divisible, distribute the remaining tasks sequentially.
-- Save the distributed lists in MongoDB.
-- Display the distributed lists for each agent on the frontend.
+## Tech Stack
+### Backend (Node.js + Express.js)
+- **Node.js**: Runtime for JavaScript
+- **Express.js**: Framework for handling API requests
+- **MongoDB + Mongoose**: Database and ORM
+- **bcryptjs**: Password hashing
+- **jsonwebtoken**: Authentication
+- **multer**: File upload handling
+- **csv-parser**: CSV file processing
 
-## Setup Instructions
+### Frontend (React.js)
+- **React.js**: Frontend framework
+- **React Router**: Navigation management
+- **Axios**: API communication
+- **Tailwind CSS / Bootstrap**: Styling
 
-### 1. Prerequisites
-Make sure you have the following installed:
-- Node.js (v14 or higher)
-- MongoDB (local or cloud, e.g., MongoDB Atlas)
+---
 
-### 2. Clone the Repository
+## Backend Setup
+### Installation
 ```sh
- git clone <repository-url>
- cd admin-dashboard
+cd backend
+npm install
 ```
 
-### 3. Install Dependencies
-```sh
- npm install
-```
-
-### 4. Set Up Environment Variables
-Create a `.env` file in the root directory and add:
+### Environment Variables
+Create a `.env` file in the `backend` directory and add:
 ```env
-MONGO_URI=<your-mongodb-connection-string>
-PORT=9000
-JWT_SECRET=<your-secret-key>
+PORT=5000
+MONGO_URI=your_mongodb_connection_string
+JWT_SECRET=your_jwt_secret
 ```
 
-### 5. Start the Backend Server
+### Running the Server
 ```sh
- node server.js
+npm start
 ```
 
-### 6. Start the Frontend
+---
+
+## Frontend Setup
+### Installation
 ```sh
- cd client
- npm install
- npm start
+cd frontend
+npm install
 ```
+
+### Running the Frontend
+```sh
+npm start
+```
+
+---
 
 ## API Endpoints
+### User Authentication
+- **POST /api/auth/register** → Register a new user
+- **POST /api/auth/login** → Login user
 
-### 1. Agent Management
-#### Register Agent
-```http
-POST /api/admin/create
-```
-**Request Body:**
-```json
-{
-  "name": "John Doe",
-  "email": "john@example.com",
-  "phone": "+1234567890",
-  "password": "securepassword"
-}
-```
+### Admin Features
+- **POST /api/admin/create-agent** → Create an agent
+- **POST /api/admin/upload-csv** → Upload CSV file & distribute tasks
+- **GET /api/admin/tasks** → View all tasks
 
-### 2. Upload CSV
-#### Upload and Distribute Tasks
-```http
-POST /api/admin/upload
-```
-**Request:** Multipart form-data containing the CSV file.
+---
 
-### 3. Fetch Data
-#### Get All Agents
-```http
-GET /api/admin/agents
-```
+## File Upload (CSV)
+- **Multer** is used for handling file uploads.
+- CSV files can be uploaded via the `/api/admin/upload-csv` endpoint.
+- Uploaded tasks are **automatically distributed among agents**.
 
-#### Get Distributed Tasks
-```http
-GET /api/admin/tasks
-```
+---
 
-## Evaluation Criteria
-1. **Functionality:** Does the application meet the requirements?
-2. **Code Quality:** Is the code clean, readable, and well-documented?
-3. **Validation and Error Handling:** Are edge cases handled effectively?
-4. **User Interface:** Is the interface user-friendly?
-5. **Execution:** Is the application easy to set up and run?
+## Deployment
+- **Backend**: Deployed on AWS / Heroku
+- **Frontend**: Deployed on Vercel / Netlify
+- **Database**: MongoDB Atlas
+
+---
+
+## How to Contribute
+1. Fork the repository
+2. Create a new branch
+3. Commit your changes
+4. Open a pull request
+
+---
 
 ## License
-This project is open-source and available under the MIT License.
+This project is licensed under the MIT License.
+
+---
+
+###  Developed By
+**Vijay kumar** 
 
